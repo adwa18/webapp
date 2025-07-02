@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tg = window.Telegram?.WebApp;
     if (tg) {
         tg.expand();
-        tg.setViewportHeight(window.innerHeight);
+        tg.enableClosingConfirmation();
     }
 
     const userId = (tg?.initDataUnsafe?.user?.id ||
