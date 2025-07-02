@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             console.log('Fetching user data from:', `${API_URL}/user_data?user_id=${userId}`);
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller abort(), 5000);
+            const timeoutId = setTimeout(() => controller.abort(), 5000);
             const response = await fetch(`${API_URL}/user_data?user_id=${userId}`, { signal: controller.signal });
             clearTimeout(timeoutId);
             console.log('Response status:', response.status, 'Headers:', response.headers);
