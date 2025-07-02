@@ -1,15 +1,15 @@
-(function () {
-    // Telegram Web App initialization
+document.addEventListener('DOMContentLoaded', function() {
     const tg = window.Telegram?.WebApp;
     if (tg) {
         tg.expand();
         tg.setViewportHeight(window.innerHeight);
     }
 
-    const userId = (tg?.initDataUnsafe?.user?.id || new URLSearchParams(window.location.search).get('user_id'))?.toString();
+    const userId = (tg?.initDataUnsafe?.user?.id ||
+                   new URLSearchParams(window.location.search).get('user_id'))?.toString();
     if (!userId) {
-        console.error('No user ID found');
-        showErrorPage('User ID is missing');
+        
+        showErrorPage('User ID is missing. Please open this from the Telegram bot.');
         return;
     }
 
@@ -18,7 +18,7 @@
     let currentBet = null;
 
     // DOM Elements
-    const API_URL = 'https://zebi-bingo-bot.vercel.app/api'; // Use full URL for reliability
+    const API_URL = 'https://zebi-bingo-bot.vercel.app/api';
     const welcomePage = document.getElementById('welcomePage');
     const loadingPage = document.getElementById('loadingPage');
     const errorPage = document.getElementById('errorPage');
@@ -764,4 +764,4 @@
     // Initialize
     checkRegistration();
     updatePlayerInfo();
-})();
+});

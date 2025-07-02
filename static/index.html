@@ -6,8 +6,7 @@
     <title>ዜቢ ቢንጎ</title>
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="style.css?v=1">
-    <script src="script.js?v=1"></script>
-    <script src="https://telegram.org/js/telegram-web-app.js?v=1"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div id="app">
@@ -15,8 +14,10 @@
             <img src="/logo.png" alt="Zebi Bingo Logo" class="logo">
             <h1>ዜቢ ቢንጎ</h1>
             <div id="playerInfo" style="position: absolute; top: 1rem; left: 1rem;">👤 Loading...</div>
-            <button id="adminMenuBtn" style="display: none;">🛠 አስተዳዳሪ</button>
-            
+            <div class="header-buttons">
+                <button id="adminMenuBtn" style="display: none;">🛠 አስተዳዳሪ</button>
+                <button id="createGameBtn" style="display: none;">🎮 ጨዋታ ፍጠር</button>
+            </div>
             
         </header>
         <div id="loadingPage" class="content" style="display: none;">
@@ -65,16 +66,17 @@
                 <button id="withdrawMoney">💸 ገንዘብ ለማውጣት</button>
                 <button id="topLeaders">🏆 የመሪዎች ዝርዝር</button>
                 <button id="inviteFriends">👥 ጓደኞችን ጋብዝ</button>
+                
             </nav>
         </div>
         <div id="gameArea" class="content" style="display: none;">
-            <div id="gameStatus"></div>
-            <div id="calledNumbers"></div>
+            <div id="gameStatus">Status: Loading...</div>
+            <div id="calledNumbers">Called Numbers: None</div>
             <div id="bingoCard" class="bingo-card"></div>
             <div class="game-actions">
-                <button id="callBtn" class="action-btn">📢 Call Number</button>
-                <button id="bingoBtn" class="action-btn">🎉 BINGO!</button>
-                <button id="returnBtn" class="secondary-btn">Return</button>
+                <button id="callBtn" class="action-btn">📢 ቁጥር ይጥሩ</button>
+                <button id="bingoBtn" class="action-btn">🎉 ቢንጎ!</button>
+                <button id="returnBtn" class="secondary-btn">🔙 ተመለስ</button>
             </div>
         </div>
         <div id="content" class="content" style="display: none;"></div>
@@ -84,10 +86,11 @@
                 <label class="theme-switch">
                     <input type="checkbox" id="nightModeSwitch">
                     <span class="slider round"></span>
+                    <span>🌙</span>
                 </label>
             </div>
         </footer>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1"></script>
 </body>
 </html>
