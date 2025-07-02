@@ -2,26 +2,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const tg = window.Telegram?.WebApp;
     if (tg) {
         tg.expand();
-        tg.enableClosingConfirmation();
-    }
-
-    const userId = (tg?.initDataUnsafe?.user?.id ||
-                   new URLSearchParams(window.location.search).get('user_id'))?.toString();
-    if (!userId) {
+        if (tg.enableClosingConfirmation) {
+        tg.enableClosingConfirmation();    
         
-        showErrorPage('User ID is missing. Please open this from the Telegram bot.');
-        return;
     }
 
-    let gameId = null;
-    let selectedNumber = null;
-    let currentBet = null;
+    
 
     // DOM Elements
-    const API_URL = 'https://zebi-bingo-bot.vercel.app/api';
+    
     const welcomePage = document.getElementById('welcomePage');
     const loadingPage = document.getElementById('loadingPage');
     const errorPage = document.getElementById('errorPage');
+    const errorMessage = document.getElementById('errorMessage');
     const registerPage = document.getElementById('registerPage');
     const mainPage = document.getElementById('mainPage');
     const gameArea = document.getElementById('gameArea');
@@ -46,6 +39,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const createGameBtn = document.getElementById('createGameBtn');
     const devInfo = document.getElementById('devInfo');
 
+    const userId = (tg?.initDataUnsafe?.user?.id ||
+                   new URLSearchParams(window.location.search).get('user_id'))?.toString();
+    if (!userId) {
+        
+        showErrorPage('User ID is missing. Please open this from the Telegram bot.');
+        return;
+    }
+
+    let gameId = null;
+    let selectedNumber = null;
+    let currentBet = null;
+    
+    const API_URL = 'https://zebi-bingo-bot.vercel.app/api';
+
     if (!adminMenuBtn) {
         console.error('adminMenuBtn not found');
     }
@@ -65,14 +72,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showErrorPage(message) {
-        const errorElement = document.getElementById('errorMessage');
-        if (errorElement && errorPage) {
-            errorElement.textContent = message;
-            showPage(errorPage);
-        } else {
-            console.error('errorPage or errorMessage not found');
-            document.body.innerHTML = `<h1>Error: ${message}</h1><button onclick="window.location.reload()">Retry</button>`;
+        if (!errorPage || !errorMessage) {
+            console.error('Error page elements not found!');
+            document.body.innerHTML = `<h1 style="color:red">Error: ${message}</h1>`;
+            return;
         }
+        errorMessage.textContent = message;
+        errorPage.style.display = 'flex';
+        document.querySelectorAll('.content').forEach(el => {
+            el.style.display = 'none';
+        });
     }
 
     // Registration handler
