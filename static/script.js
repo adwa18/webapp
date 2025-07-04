@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (tg.enableClosingConfirmation) {
         tg.enableClosingConfirmation();    
         
+        }
     }
-
     
 
     // DOM Elements
