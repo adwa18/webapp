@@ -1,13 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tg = window.Telegram?.WebApp;
     if (tg) {
+        // Always available in all versions
         tg.expand();
-        if (tg.enableClosingConfirmation) {
-        tg.enableClosingConfirmation();    
         
+        // Version-checked features
+        try {
+            // Only available in newer versions
+            if (typeof tg.enableClosingConfirmation === 'function') {
+                tg.enableClosingConfirmation();
+            } else {
+                console.log('Closing confirmation not supported in this Telegram version');
+            }
+            
+            // Other version-specific features
+            if (typeof tg.setHeaderColor === 'function') {
+                tg.setHeaderColor('#2E7D32'); // Your theme color
+            }
+        } catch (e) {
+            console.warn('Telegram WebApp feature error:', e);
         }
-    }
-    
+    }    
 
     // DOM Elements
     
