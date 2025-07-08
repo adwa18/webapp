@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let gameId = null;
     let selectedNumber = null;
     let currentBet = null;
-    
-    const API_URL = 'https://zebi-bingo-bot.vercel.app/api';
+   
+    const API_URL = 'https://zebi-bingo-web.netlify.app/api';
 
     if (!adminMenuBtn) {
         console.error('adminMenuBtn not found');
