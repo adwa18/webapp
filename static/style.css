@@ -43,13 +43,16 @@ body.night-mode {
     margin: 0 auto;
     padding: 1rem;
     background-color: #fff;
+    border: 2px solid red !important;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Content Sections */
 .content {
-    display: none;
+    display: block !important;
+    opacity: 0.9 !important;
+    background: #f0f0f0 !important;
     min-height: 100vh;
     padding: 15px;
     flex-direction: column;
