@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ዜቢ ቢንጎ</title>
     <link rel="icon" href="/favicon.ico">
-    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="stylesheet" href="style.css?v=2">
     
 </head>
 <body>
@@ -20,22 +20,22 @@
             </div>
             
         </header>
-        <div id="loadingPage" class="content" style="display: none;">
+        <div id="loadingPage" class="content">
             <h2>Loading...</h2>
             <div class="loader"></div>
         </div>
-        <div id="errorPage" class="content" style="display: none;">
+        <div id="errorPage" class="content">
             <h2>Error</h2>
             <p id="errorMessage">An error occurred.</p>
-            <button onclick="checkRegistration()">Retry</button>
-            <button id="returnToBotBtn">Return to Bot</button>
+            <button id="retryBtn" class="primary-btn">Retry</button>
+            <button id="returnToBotBtn" class="secondary-btn">Return to Bot</button>
         </div>
-        <div id="welcomePage" class="content" style="display: none;">
+        <div id="welcomePage" class="content">
             <h2>እንኳን ወደ ዜቢ ቢንጎ በደህና መጡ!</h2>
             <p>አስደሳች የቢንጎ ጨዋታ ይቀላቀሉ!</p>
             <button id="startBtn" class="primary-btn">ጀምር</button>
         </div>
-        <div id="registerPage" class="content" style="display: none;">
+        <div id="registerPage" class="content">
             <h2>ይመዝገቡ</h2>
             <div class="form-group">
                 <input id="phoneInput" type="tel" placeholder="ስልክ ቁጥር" required>
@@ -49,7 +49,7 @@
             <button id="registerBtn" class="primary-btn">መዝግብ</button>
             <p id="registerError" style="color: red;"></p>
         </div>
-        <div id="mainPage" class="content" style="display: none;">
+        <div id="mainPage" class="content">
             
             <div class="game-container">
                 <h2>የጨዋታ መደብ ይምረጡ</h2>
@@ -69,7 +69,7 @@
                 
             </nav>
         </div>
-        <div id="gameArea" class="content" style="display: none;">
+        <div id="gameArea" class="content">
             <div id="gameStatus">Status: Loading...</div>
             <div id="calledNumbers">Called Numbers: None</div>
             <div id="bingoCard" class="bingo-card"></div>
@@ -79,7 +79,7 @@
                 <button id="returnBtn" class="secondary-btn">🔙 ተመለስ</button>
             </div>
         </div>
-        <div id="content" class="content" style="display: none;"></div>
+        <div id="content" class="content"></div>
         <footer>
             <div class="footer-content">
                 <p id="devInfo">Developed by Benzion Creatives 2025</p>
@@ -92,6 +92,6 @@
         </footer>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="script.js?v=1"></script>
+    <script src="script.js?v=2"></script>
 </body>
 </html>
