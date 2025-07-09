@@ -1,6 +1,14 @@
 [build]
   command = "pip install -r requirements.txt"
   publish = "static"
+  functions = "api"  # Points to the /api directory for serverless functions
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/app/:splat"  # Routes /api/* to app.py
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
