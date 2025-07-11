@@ -1,0 +1,10 @@
+/static/*.js
+  Content-Type: text/javascript
+/static/*.css
+  Content-Type: text/css
+/static/*.ico
+  Content-Type: image/x-icon
+/static/*.png
+  Content-Type: image/png
+/static/index.html
+  Content-Type: text/html
