@@ -1,5 +1,5 @@
 [build]
-  command = "pip install --no-cache-dir -r requirements.txt && echo 'Copying static files...' && mkdir -p static && cp -rv static/* static/ || echo 'Static copy failed, continuing...' && true"
+  command = "pip install --no-cache-dir -r requirements.txt && echo 'Listing static files...' && ls -l static/ || echo 'No files in static/'; echo 'Build complete.'"
   publish = "static"
   functions = "api"
   environment = { PYTHON_VERSION = "3.8" }
