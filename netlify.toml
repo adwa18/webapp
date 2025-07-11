@@ -1,5 +1,5 @@
 [build]
-  command = "pip install --no-cache-dir -r requirements.txt && mkdir -p static && cp -r static/* static/ || true"
+  command = "pip install --no-cache-dir -r requirements.txt && echo 'Copying static files...' && mkdir -p static && cp -rv static/* static/ || echo 'Static copy failed, continuing...' && true"
   publish = "static"
   functions = "api"
   environment = { PYTHON_VERSION = "3.8" }
@@ -11,6 +11,13 @@
   force = true
 
 [[redirects]]
+  from = "/static/*"
+  to = "/static/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
