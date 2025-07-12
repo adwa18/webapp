@@ -79,14 +79,14 @@ async function checkRegistration() {
     });
     if (!welcomePage) {
         console.error('welcomePage is missing in DOM');
-        document.body.innerHTML = '<h1>Error: Welcome page not found</h1>';
+        showErrorPage('Welcome page not found');
         return;
     }
     showPage(welcomePage);
     await new Promise(resolve => setTimeout(resolve, 500));
     if (!loadingPage) {
         console.error('loadingPage is missing in DOM');
-        document.body.innerHTML = '<h1>Error: Loading page not found</h1>';
+        showErrorPage('Loading page not found');
         return;
     }
     showPage(loadingPage);
@@ -107,14 +107,14 @@ async function checkRegistration() {
         if (data.error || !data.registered) {
             if (!registerPage) {
                 console.error('registerPage is missing in DOM');
-                document.body.innerHTML = '<h1>Error: Register page not found</h1>';
+                showErrorPage('Register page not found');
                 return;
             }
             showPage(registerPage);
         } else {
             if (!mainPage) {
                 console.error('mainPage is missing in DOM');
-                document.body.innerHTML = '<h1>Error: Main page not found</h1>';
+                showErrorPage('Main page not found');
                 return;
             }
             showPage(mainPage);
@@ -127,6 +127,7 @@ async function checkRegistration() {
     } finally {
         if (loadingPage) {
             loadingPage.style.display = 'none';
+            loadingPage.classList.remove('active');
         }
     }
 }
