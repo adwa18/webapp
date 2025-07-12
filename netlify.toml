@@ -1,15 +1,18 @@
 [build]
-  command = "pip install --no-cache-dir -r requirements.txt && echo 'Listing static files...' && ls -l static/ && echo 'Verifying static files...' && cat static/script.js | head -n 5 && cat static/style.css | head -n 5 && cat static/index.html | head -n 10 && echo 'Build complete.'"
+  command = "pip install --no-cache-dir -r requirements.txt && echo 'Listing static files...' && ls -l static/ && echo 'Verifying static files...' && cat static/script.js | head -n 5 && cat static/style.css | head -n 5 && echo 'Build complete.'"
   publish = "static"
   functions = "api"
   environment = { PYTHON_VERSION = "3.8" }
-
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/app/:splat"
   status = 200
   force = true
-
+[[redirects]]
+  from = "/static/*"
+  to = "/:splat"
+  status = 200
+  force = true
 [[redirects]]
   from = "/*"
   to = "/index.html"
