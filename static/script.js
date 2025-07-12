@@ -1,10 +1,13 @@
 // Global Constants
-const API_URL = 'https://zebi-bingo-web.netlify.app/api';
+const API_URL = 'https://zebi-bingo-webapp.netlify.app/api';
 
 // Global Variables
 let gameId = null;
 let selectedNumber = null;
 let currentBet = null;
+let userId = (window.Telegram?.WebApp?.initDataUnsafe?.user?.id ||
+              new URLSearchParams(window.location.search).get('user_id') ||
+              'fallback_user_id')?.toString();
 
 // Global Functions
 function showPage(page) {
@@ -67,6 +70,13 @@ async function registerUser() {
 async function checkRegistration() {
     console.log('Checking registration for userId:', userId);
     console.log('Telegram WebApp data:', tg?.initDataUnsafe);
+    console.log('DOM elements:', {
+        welcomePage: !!welcomePage,
+        loadingPage: !!loadingPage,
+        registerPage: !!registerPage,
+        mainPage: !!mainPage,
+        errorPage: !!errorPage
+    });
     if (!welcomePage) {
         console.error('welcomePage is missing in DOM');
         document.body.innerHTML = '<h1>Error: Welcome page not found</h1>';
