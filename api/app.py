@@ -23,7 +23,7 @@ MINIMUM_DEPOSIT = 50
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "https://zebi-bingo-web.netlify.app"}})
+CORS(app, resources={r"/api/*": {"origins": "https://zebi-bingo-webapp.netlify.app"}})
 
 # Initialize logging
 logging.basicConfig(
